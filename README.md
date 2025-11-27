@@ -39,14 +39,11 @@ This backend system manages coupon creation, evaluation, and application logic w
 | **Cart-wise Coupons**    | Apply discount when cart total meets threshold | Discount = % of cart total                 |
 |                          | Reject coupon when below threshold             | No discount applied                        |
 |                          | Handle rounding precision                      | Uses `math.Round()` for 2-decimal accuracy |
-
 | **Product-wise Coupons** | Apply % discount to specific product only      | Per-item discount multiplied by quantity   |
 |                          | If item not present in cart → ignore           | Coupon still valid but discount = 0        |
-
 | **BxGy Coupons**         | Buy X items get Y free                         | Free quantity depends on repetition limit  |
 |                          | Supports multiple repetition cycles            | e.g., Buy 2 get 1 free → 6 items ⇒ 3 free  |
 |                          | Handles capped free quantities                 | Free cannot exceed available quantity      |
-
 | **Global Rules**         | Expired coupons are rejected                   | Based on `ExpiresAt` timestamp             |
 |                          | Applies only one coupon at a time              | No stacking                                |
 |                          | Returns sorted applicable coupons              | API: `/applicable-coupons`                 |
